@@ -51,13 +51,6 @@ android {
 
 dependencies {
 
-    // For AppWidgets support
-    implementation("androidx.glance:glance-appwidget:1.1.0")
-    // For interop APIs with Material 3
-    implementation("androidx.glance:glance-material3:1.1.0")
-    // For interop APIs with Material 2
-    implementation("androidx.glance:glance-material:1.1.0")
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -66,6 +59,14 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // For AppWidgets support
+    implementation("androidx.glance:glance-appwidget:1.1.0")
+    // For interop APIs with Material 3
+    implementation("androidx.glance:glance-material3:1.1.0")
+    // For interop APIs with Material 2
+    implementation("androidx.glance:glance-material:1.1.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -49,7 +49,7 @@ class SimpleWidgetContent : GlanceAppWidget() {
                 )
                 Button(
                     text = "Detalles de los cultivos",
-                    onClick = actionStartActivity<DetailActivity>()
+                    onClick = actionStartActivity<DetallesScreen>()
                 )
             }
         }

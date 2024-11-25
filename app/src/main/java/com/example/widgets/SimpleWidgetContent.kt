@@ -37,13 +37,20 @@ class SimpleWidgetContent : GlanceAppWidget() {
             verticalAlignment = Alignment.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "¿A donde quieres dirigirte?", modifier = GlanceModifier.padding(12.dp))
-            Row(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(text = "¿A que pagina quieres dirigirte?", modifier = GlanceModifier.padding(12.dp))
+            Column (horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
-                    text = "Página Principal",
+                    text = "Lista de cultivos",
                     onClick = actionStartActivity<MainActivity>()
                 )
-
+                Button(
+                    text = "Informacion de cultivos",
+                    onClick = actionStartActivity<InformacionScreen>()
+                )
+                Button(
+                    text = "Detalles de los cultivos",
+                    onClick = actionStartActivity<DetailActivity>()
+                )
             }
         }
     }

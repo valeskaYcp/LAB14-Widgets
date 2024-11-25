@@ -1,30 +1,54 @@
 package com.example.widgets
 
+
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.widgets.ui.theme.WidgetsTheme
 
-class MainActivity : ComponentActivity() {
+class DetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val cropName = intent.getStringExtra("CROP_NAME") ?: "Cultivo desconocido"
         setContent {
-            SimpleWidgetContent()
-            Text(
-                text = "Hola Android",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(16.dp)
-            )
+            CropDetailScreen(cropName)
+        }
+    }
+}
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CropDetailScreen(cropName: String) {
+    Scaffold(topBar = {
+        TopAppBar(title = { Text("Detalles del Cultivo") })
+    }) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Spacer(modifier = Modifier.height(42.dp))
+            CropInfoCard("Trigo", "Cultivo de cereal básico para la producción de harina.")
+            CropInfoCard("Maíz", "Cultivo clave para alimentos, forrajes y bioenergía.")
+            CropInfoCard("Arroz", "Principal fuente de alimento en muchas culturas.")
+        }
+    }
+}
+
+@Composable
+fun CropInfoCard(cropName: String, description: String) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(cropName, style = MaterialTheme.typography.titleMedium)
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(description, style = MaterialTheme.typography.bodyMedium)
         }
     }
 }
